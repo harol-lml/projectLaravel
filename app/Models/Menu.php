@@ -9,4 +9,13 @@ class Menu extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'description'];
+
+     /**
+     * Relation between submenus
+     *
+     * @return mixed
+     */
+    public function sumenus() {
+    	return $this->hasMany('App\Models\Submenu');
+    }
 }

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MenuController;
 
 Route::group([
     'middleware' => 'api',
@@ -37,4 +38,15 @@ Route::group([
     Route::post('/', [UserController::class, 'create'])->name('users.create'); // Crear usario
     // Route::put('/{id}', [UserController::class, 'update'])->name('users.update'); // Actualizar usario
     Route::delete('/{id}', [UserController::class, 'delete'])->name('users.delete'); // Eliminar usario
+});
+
+Route::group([
+    'middleware' => ['auth:api'],// 'api',
+    'prefix' => 'menus'
+], function ($router) {
+    Route::get('/', [MenuController::class, 'all'])->name('menus.all');
+    Route::get('/{id}', [MenuController::class, 'find'])->name('menus.find');
+    Route::post('/', [MenuController::class, 'create'])->name('menus.create'); // Crear menu
+    Route::put('/{id}', [MenuController::class, 'update'])->name('menus.update'); // Actualizar menu
+    Route::delete('/{id}', [MenuController::class, 'delete'])->name('menus.delete'); // Eliminar menu
 });

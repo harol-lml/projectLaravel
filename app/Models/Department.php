@@ -10,4 +10,13 @@ class Department extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'description'];
+
+    /**
+     * Relation between users
+     *
+     * @return mixed
+     */
+    public function users() {
+    	return $this->belongsToMany('App\Models\User');
+    }
 }

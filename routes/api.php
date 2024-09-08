@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\SubmenuController;
 
 Route::group([
     'middleware' => 'api',
@@ -49,4 +50,15 @@ Route::group([
     Route::post('/', [MenuController::class, 'create'])->name('menus.create'); // Crear menu
     Route::put('/{id}', [MenuController::class, 'update'])->name('menus.update'); // Actualizar menu
     Route::delete('/{id}', [MenuController::class, 'delete'])->name('menus.delete'); // Eliminar menu
+});
+
+Route::group([
+    'middleware' => ['auth:api'],// 'api',
+    'prefix' => 'submenus'
+], function ($router) {
+    Route::get('/', [SubmenuController::class, 'all'])->name('submenus.all');
+    Route::get('/{id}', [SubmenuController::class, 'find'])->name('submenus.find');
+    Route::post('/', [SubmenuController::class, 'create'])->name('submenus.create'); // Crear submenu
+    Route::put('/{id}', [SubmenuController::class, 'update'])->name('submenus.update'); // Actualizar submenu
+    Route::delete('/{id}', [SubmenuController::class, 'delete'])->name('submenus.delete'); // Eliminar submenu
 });

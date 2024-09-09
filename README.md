@@ -64,3 +64,43 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+##  Cómo correr el proyecto
+Instalar [Docker y docker-compose](https://www.docker.com/)
+
+Clonar repo:
+```sh
+git@github.com:harol-lml/projectLaravel.git
+```
+Ir al directorio:
+```sh
+cd projectLaravel
+```
+Se configura alias para sail (Opcional ):
+```sh
+vim ~/.bashrc
+```
+Agregamos el alias:
+```sh
+alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+```
+En levante el servicio de contenedores (con alias):
+```sh 
+sail up
+```
+Sin alias (Todos los comandos ./vendor/bin/sail):
+```sh
+./vendor/bin/sail up
+```
+Instalan dependencias:
+```sh
+sail composer install
+```
+
+Configurar el archivo .env.example y dejarlo como .env y dentro colocar todas las variables de entorno de nuestro proyecto.
+
+Generar las migraciones:
+```sh
+sail artisan migrate
+```

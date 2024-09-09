@@ -87,7 +87,7 @@ alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 ```
 En levante el servicio de contenedores (con alias):
 ```sh 
-sail up
+sail up -d
 ```
 Sin alias (Todos los comandos ./vendor/bin/sail):
 ```sh

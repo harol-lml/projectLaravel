@@ -77,6 +77,8 @@ Ir al directorio:
 ```sh
 cd projectLaravel
 ```
+Configurar el archivo .env.example y dejarlo como .env y dentro colocar todas las variables de entorno de nuestro proyecto.
+
 Se configura alias para sail (Opcional ):
 ```sh
 vim ~/.bashrc
@@ -89,6 +91,10 @@ En levante el servicio de contenedores (con alias):
 ```sh 
 sail up -d
 ```
+O puede levantar los contenedores manualmente
+```sh 
+docker-compose up -d
+```
 Sin alias (Todos los comandos ./vendor/bin/sail):
 ```sh
 ./vendor/bin/sail up
@@ -98,7 +104,7 @@ Instalan dependencias:
 sail composer install
 ```
 
-Configurar el archivo .env.example y dejarlo como .env y dentro colocar todas las variables de entorno de nuestro proyecto.
+
 
 Generar las migraciones:
 ```sh
